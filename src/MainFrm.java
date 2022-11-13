@@ -43,7 +43,7 @@ public class MainFrm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String psw = new String(psswrdFildPassword.getPassword());
-                txtPn.setText(txtPn.getText() + txtFldUsername.getText() + " " + psw + "\n");
+                txtPn.setText(txtPn.getText() +"Username: " + txtFldUsername.getText() + "  Password: " + psw + "\n");
                 resetControls();
             }
         });
