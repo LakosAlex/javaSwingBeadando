@@ -1,6 +1,6 @@
 import javax.swing.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainFrm extends JFrame {
     private JPanel pnlMain;
@@ -15,12 +15,23 @@ public class MainFrm extends JFrame {
     private JLabel lblFullName;
     private JLabel lblAddress;
     private JLabel lblGender;
+    private JButton bttnDelete;
+    private JButton bttnSave;
+    private JButton bttnOpen;
+    private JPanel pnlRegisteredUsers;
+    private JPanel pnlRegistration;
+    private JPanel pnlRegisteredUsersBttns;
+    private JTextPane txtPn;
+    private JScrollPane scrllPn;
+    private JPanel pnlSearch;
+    private JTextField txtFldSearch;
+    private JButton bttnSearch;
 
     public static void main(String[] args) {
         MainFrm mainFrm = new MainFrm();
         mainFrm.setContentPane(mainFrm.pnlMain);
-        mainFrm.setTitle("Hello!!!!");
-        mainFrm.setSize(400,500);
+        mainFrm.setTitle("Registration App");
+        mainFrm.setSize(400,400);
         mainFrm.setVisible(true);
         mainFrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrm.setResizable(false);
@@ -28,6 +39,13 @@ public class MainFrm extends JFrame {
     }
     public MainFrm(){
 
+        bttnRegistration.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String psw = new String(psswrdFildPassword.getPassword());
+                txtPn.setText(txtPn.getText() + txtFldUsername.getText() + " " + psw + "\n");
+            }
+        });
     }
 
 
