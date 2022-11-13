@@ -44,8 +44,17 @@ public class MainFrm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String psw = new String(psswrdFildPassword.getPassword());
                 txtPn.setText(txtPn.getText() + txtFldUsername.getText() + " " + psw + "\n");
+                resetControls();
             }
         });
+    }
+
+    public void resetControls(){
+        txtFldUsername.setText("");
+        psswrdFildPassword.setText("");
+        txtFldFullname.setText("");
+        txtFldAddress.setText("");
+        cmbBxGender.setSelectedIndex(-1);
     }
 
 
