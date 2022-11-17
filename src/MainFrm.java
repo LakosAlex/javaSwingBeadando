@@ -8,13 +8,13 @@ public class MainFrm extends JFrame {
     private JTextField txtFldFullname;
     private JPasswordField psswrdFildPassword;
     private JTextField txtFldAddress;
-    private JComboBox cmbBxGender ;
+    private JComboBox cmbBxRole;
     private JButton bttnRegistration;
     private JLabel lblUsername;
     private JLabel lblPassword;
     private JLabel lblFullName;
     private JLabel lblAddress;
-    private JLabel lblGender;
+    private JLabel lblRole;
     private JButton bttnDelete;
     private JButton bttnSave;
     private JButton bttnOpen;
@@ -27,7 +27,8 @@ public class MainFrm extends JFrame {
     private JTextField txtFldSearch;
     private JButton bttnSearch;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
+
         MainFrm mainFrm = new MainFrm();
         mainFrm.setContentPane(mainFrm.pnlMain);
         mainFrm.setTitle("Registration App");
@@ -35,26 +36,28 @@ public class MainFrm extends JFrame {
         mainFrm.setVisible(true);
         mainFrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrm.setResizable(false);
-
     }
     public MainFrm(){
 
         bttnRegistration.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String psw = new String(psswrdFildPassword.getPassword());
-                txtPn.setText(txtPn.getText() +"Username: " + txtFldUsername.getText() + "  Password: " + psw + "\n");
+                char[] password = psswrdFildPassword.getPassword();
+                int role = cmbBxRole.getSelectedIndex();
+                DB db = new DB();
+                db.insertUserIntoDB(txtFldUsername.getText(),password, role);
                 resetControls();
             }
         });
     }
 
     public void resetControls(){
+
         txtFldUsername.setText("");
         psswrdFildPassword.setText("");
         txtFldFullname.setText("");
         txtFldAddress.setText("");
-        cmbBxGender.setSelectedIndex(-1);
+        cmbBxRole.setSelectedIndex(-1);
     }
 
 
