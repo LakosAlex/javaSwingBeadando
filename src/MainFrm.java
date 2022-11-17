@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainFrm extends JFrame {
     private JPanel pnlMain;
@@ -15,17 +17,20 @@ public class MainFrm extends JFrame {
     private JLabel lblFullName;
     private JLabel lblAddress;
     private JLabel lblRole;
-    private JButton bttnDelete;
-    private JButton bttnSave;
-    private JButton bttnOpen;
+    private JButton bttnWrite;
     private JPanel pnlRegisteredUsers;
     private JPanel pnlRegistration;
     private JPanel pnlRegisteredUsersBttns;
-    private JTextPane txtPn;
     private JScrollPane scrllPn;
     private JPanel pnlSearch;
-    private JTextField txtFldSearch;
-    private JButton bttnSearch;
+    private JButton bttnDelete;
+    private JTextPane txtPn;
+    private JComboBox cmbBxUsers;
+    private JButton bttnEdit;
+    private JButton bttnCancel;
+    private JButton bttnSave;
+    DB db;
+    User user;
 
     public static void main(String[] args) throws ClassNotFoundException {
 
@@ -37,16 +42,39 @@ public class MainFrm extends JFrame {
         mainFrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrm.setResizable(false);
     }
+
     public MainFrm(){
 
+        fillTxtPnCmbBx();
         bttnRegistration.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 char[] password = psswrdFildPassword.getPassword();
                 int role = cmbBxRole.getSelectedIndex();
-                DB db = new DB();
-                db.insertUserIntoDB(txtFldUsername.getText(),password, role);
+                db = new DB();
+                db.insertUserIntoDB(txtFldUsername.getText(),password, txtFldFullname.getText(), txtFldAddress.getText(), role);
                 resetControls();
+                fillTxtPnCmbBx();
+            }
+        });
+        bttnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                db = new DB();
+                db.deleteUserFromDB(Objects.requireNonNull(cmbBxUsers.getSelectedItem()).toString());
+                resetControls();
+                fillTxtPnCmbBx();
+            }
+        });
+        bttnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                db = new DB();
+                user = db.getUser(cmbBxUsers.getSelectedItem().toString());
+                txtFldUsername.setText(user.getUsername());
+                txtFldAddress.setText(user.getAddress());
+                txtFldFullname.setText(user.getFullName());
+                cmbBxRole.setSelectedIndex(Integer.parseInt(user.getRole()) - 1);
             }
         });
     }
@@ -60,5 +88,15 @@ public class MainFrm extends JFrame {
         cmbBxRole.setSelectedIndex(-1);
     }
 
+    public void fillTxtPnCmbBx(){
 
+        txtPn.setText(null);
+        cmbBxUsers.removeAllItems();
+        db = new DB();
+        ArrayList<User> users = db.getUsers();
+        for (User user : users){
+            txtPn.setText(txtPn.getText() + "Username: " + user.getUsername() + " | Full Name: " + user.getFullName() + "\n");
+            cmbBxUsers.addItem(user.getUsername());
+        }
+    }
 }
