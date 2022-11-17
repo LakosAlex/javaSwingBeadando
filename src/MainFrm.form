@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="pnlMain" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="398" height="435"/>
+      <xy x="20" y="20" width="398" height="470"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -126,7 +126,7 @@
         <properties/>
         <border type="none" title="Registered Users"/>
         <children>
-          <grid id="c5ffa" binding="pnlRegisteredUsersBttns" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="c5ffa" binding="pnlRegisteredUsersBttns" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -134,31 +134,13 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="67692" class="javax.swing.JButton" binding="bttnDelete">
+              <component id="af601" class="javax.swing.JButton" binding="bttnWrite">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <label value="Delete"/>
-                  <text value="Delete"/>
-                </properties>
-              </component>
-              <component id="af601" class="javax.swing.JButton" binding="bttnSave">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <label value="Save"/>
-                  <text value="Save"/>
-                </properties>
-              </component>
-              <component id="a0932" class="javax.swing.JButton" binding="bttnOpen">
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <label value="Open"/>
-                  <text value="Open"/>
+                  <label value="Write"/>
+                  <text value="Write"/>
                 </properties>
               </component>
             </children>
@@ -167,10 +149,12 @@
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <toolTipText value="asd"/>
+            </properties>
             <border type="none"/>
             <children>
-              <component id="e60e1" class="javax.swing.JTextPane" binding="txtPn">
+              <component id="c0d5" class="javax.swing.JTextPane" binding="txtPn">
                 <constraints/>
                 <properties/>
               </component>
@@ -178,29 +162,53 @@
           </scrollpane>
         </children>
       </grid>
-      <grid id="c7260" binding="pnlSearch" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="c7260" binding="pnlSearch" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
-        <border type="etched" title="Search"/>
+        <border type="etched" title="User Operations"/>
         <children>
-          <component id="44810" class="javax.swing.JTextField" binding="txtFldSearch">
+          <component id="c4c63" class="javax.swing.JComboBox" binding="cmbBxUsers">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
-          <component id="b88ca" class="javax.swing.JButton" binding="bttnSearch">
+          <component id="ac948" class="javax.swing.JButton" binding="bttnCancel">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <horizontalTextPosition value="4"/>
+              <text value="Cancel"/>
+            </properties>
+          </component>
+          <component id="b0211" class="javax.swing.JButton" binding="bttnSave">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <horizontalTextPosition value="4"/>
+              <text value="Save"/>
+            </properties>
+          </component>
+          <component id="334ea" class="javax.swing.JButton" binding="bttnEdit">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Edit"/>
+            </properties>
+          </component>
+          <component id="b88ca" class="javax.swing.JButton" binding="bttnDelete">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <alignmentX value="0.5"/>
-              <text value="Search"/>
+              <text value="Delete"/>
             </properties>
           </component>
         </children>
