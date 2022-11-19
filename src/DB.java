@@ -9,6 +9,7 @@ public class DB {
     String query = null;
     Connection connection;
     PreparedStatement pstmt;
+    User user;
 
     public DB() {
 
@@ -94,7 +95,7 @@ public class DB {
 
     public User getUser(String username){
 
-        User user = null;
+        user = null;
         try {
             query = "SELECT * FROM user WHERE username = ?";
             pstmt = connection.prepareStatement(query);
@@ -111,11 +112,31 @@ public class DB {
         return user;
     }
 
+    public User loginCheck(String username, char[] password){
+        user = null;
+        String hash = HashConverter.convertToHash(password);
+        try {
+            query = "SELECT * FROM user WHERE username = ? AND password = ?";
+            pstmt = connection.prepareStatement(query);
+            pstmt.setString(1,username);
+            pstmt.setString(2,hash);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {
+                user = new User(rs.getString(2), rs.getString(4), rs.getString(5), rs.getString(6));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        dbCloseConnection();
+        return user;
+    }
+
     public ArrayList<User> getUsers(){
 
         ArrayList<User> users = new ArrayList<>();
         try {
-            pstmt = connection.prepareStatement("select * from user");
+            pstmt = connection.prepareStatement("SELECT * FROM user");
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 User currentUser = new User(rs.getString(2), rs.getString(4), rs.getString(5), rs.getString(6));
