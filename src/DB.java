@@ -59,6 +59,24 @@ public class DB {
         dbCloseConnection();
     }
 
+    public void editUser(String username, String fullName, String address, int role){
+
+        query = "UPDATE user SET full_name = ?, address = ?, role_fk = ? WHERE username = ?";
+        try {
+            pstmt = connection.prepareStatement(query);
+            pstmt.setString(1,fullName);
+            pstmt.setString(2,address);
+            pstmt.setInt(3,role+1);
+            pstmt.setString(4,username);
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Update Successful!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        dbCloseConnection();
+    }
+
     public void deleteUserFromDB(String username){
 
         query = "DELETE FROM user WHERE username = ?";
@@ -77,8 +95,8 @@ public class DB {
     public User getUser(String username){
 
         User user = null;
-        query = "SELECT * FROM user WHERE username = ?";
         try {
+            query = "SELECT * FROM user WHERE username = ?";
             pstmt = connection.prepareStatement(query);
             pstmt.setString(1,username);
             ResultSet rs = pstmt.executeQuery();
@@ -109,4 +127,5 @@ public class DB {
         dbCloseConnection();
         return users;
     }
+
 }

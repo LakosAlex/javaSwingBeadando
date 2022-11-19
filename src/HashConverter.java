@@ -4,7 +4,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class HashConverter {
 
-    public static String convertToHash(char[] password) {
+    public static String convertToHash(char[] password){
 
         String pswString = String.valueOf(password);
         MessageDigest md = null;
