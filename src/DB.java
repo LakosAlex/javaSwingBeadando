@@ -3,13 +3,10 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DB {
-    final String url = "jdbc:mysql://sql7.freesqldatabase.com:3306/sql7572575";
-    final String username = "sql7572575";
-    final String password = "13a31ec2dd";
-    String query = null;
-    Connection connection;
-    PreparedStatement pstmt;
-    User user;
+    private String query = null;
+    private Connection connection;
+    private PreparedStatement pstmt;
+    private User user;
 
     public DB() {
 
@@ -25,7 +22,10 @@ public class DB {
         }
 
         try {
-            connection = DriverManager.getConnection(this.url, this.username, this.password);
+            String url = "jdbc:mysql://sql7.freesqldatabase.com:3306/sql7572575";
+            String username = "sql7572575";
+            String password = "13a31ec2dd";
+            connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
