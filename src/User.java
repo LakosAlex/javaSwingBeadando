@@ -1,9 +1,9 @@
 public class User {
 
-    final String username;
-    final String fullName;
-    final String address;
-    final String role;
+    private final String username;
+    private final String fullName;
+    private final String address;
+    private final String role;
 
     public User(String username, String fullName, String address, String role){
         this.username = username;

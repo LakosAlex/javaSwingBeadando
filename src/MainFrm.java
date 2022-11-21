@@ -36,8 +36,8 @@ public class MainFrm extends JFrame {
     private JLabel lblLoginUsername;
     private JLabel lblLoginPassword;
     private JPasswordField psswrdFldLogin;
-    DB db;
-    User user;
+    private DB db;
+    private User user;
 
     public static void main(String[] args) throws ClassNotFoundException {
 
@@ -162,7 +162,7 @@ public class MainFrm extends JFrame {
         });
     }
 
-    public void resetControls(){
+    private void resetControls(){
 
         txtFldUsername.setText("");
         psswrdFildPassword.setText("");
@@ -171,7 +171,7 @@ public class MainFrm extends JFrame {
         cmbBxRole.setSelectedIndex(-1);
     }
 
-    public void setComponentEnabledState(boolean bttnDeleteEnabled, boolean bttnEditEnabled, boolean bttnWriteEnabled, boolean bttnRegistrationEnabled, boolean cmbBxUsersEnabled, boolean psswrdFildPasswordEnabled, boolean bttnSaveEnabled, boolean bttnCancelEnabled, boolean txtFldUsernameEnabled, boolean txtFldLoginUsernameEnabled, boolean psswrdFldLoginEnabled, boolean bttnLoginEnabled){
+    private void setComponentEnabledState(boolean bttnDeleteEnabled, boolean bttnEditEnabled, boolean bttnWriteEnabled, boolean bttnRegistrationEnabled, boolean cmbBxUsersEnabled, boolean psswrdFildPasswordEnabled, boolean bttnSaveEnabled, boolean bttnCancelEnabled, boolean txtFldUsernameEnabled, boolean txtFldLoginUsernameEnabled, boolean psswrdFldLoginEnabled, boolean bttnLoginEnabled){
 
         bttnDelete.setEnabled(bttnDeleteEnabled);
         bttnEdit.setEnabled(bttnEditEnabled);
@@ -187,7 +187,7 @@ public class MainFrm extends JFrame {
         bttnLogin.setEnabled(bttnLoginEnabled);
     }
 
-    public void fillTxtPnCmbBx(){
+    private void fillTxtPnCmbBx(){
 
         txtPn.setText(null);
         cmbBxUsers.removeAllItems();
