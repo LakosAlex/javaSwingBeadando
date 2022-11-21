@@ -13,7 +13,7 @@ public class DB {
         dbConnect();
     }
 
-    public void dbConnect(){
+    private void dbConnect(){
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -31,7 +31,7 @@ public class DB {
         }
     }
 
-    public void dbCloseConnection(){
+    private void dbCloseConnection(){
 
         try {
             connection.close();
